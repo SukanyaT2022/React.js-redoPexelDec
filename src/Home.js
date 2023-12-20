@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react'
+import './App.css'
 
 const Home = () => {
 
@@ -10,7 +11,7 @@ const Home = () => {
 const [storeData, setStoreData] = useState()
 //step 1 call api
 let keyAPI = 'c19t5LBUeXItCyO5nb5bpds50rtTKwmX7xOeFa4PnEBN8jabAxpjQW6U';
-let apiUrl = `https://api.pexels.com/v1/search?query=people&per_page=20`;
+let apiUrl = `https://api.pexels.com/v1/search?query=people&per_page=20&orientation=landscape`;
 
 // url (required)
 //we use effect so api not run infinity loop
@@ -24,20 +25,23 @@ fetch(apiUrl,{
 // .then(data=>console.log(data))//for test purpose
 //step2 below store data inside state for map later
 //photos come from object when inspect
-.then(data=>setStoreData(data.photos))
+.then(data=>{
+  console.log(data.photos);
+  setStoreData(data.photos)})
 
 },[])
 
-  return (
+//  step3 map
+return (
     <>
-    {/* step3 map */}
-    <div>
+    <div className='main'>
 {
   //  storeData && is if else statement if get data then run api storeData.map
-  storeData && storeData.map((val)=>(
-    console.log(val)
+ storeData && storeData.map((val)=>(
+  
+  <img src={val.src.original}/>
     
-  ))
+   ))
 }
 
     </div>
