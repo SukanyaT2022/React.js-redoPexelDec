@@ -1,6 +1,6 @@
 import React from 'react'
 // import { faHeart } from '@fontawesome/free-solid-svg-icons';
-import { FaCat } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const NavBar = () => {
   return (
@@ -17,10 +17,10 @@ const NavBar = () => {
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#">Sign In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
+          <a class="nav-link" href="#">Sign Out</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -29,7 +29,6 @@ const NavBar = () => {
     </div>
   </div>
   {/* <FontAwesomeIcon icon={faHeart} /> */}
-  <FaCat />
 </nav>
     </div>
   )

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import NavBar from './Component/NavBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/fontawesome-free-solid'
 
 const Home = () => {
   //1 Api call
@@ -51,6 +53,26 @@ const Home = () => {
   return (
     <div className='main'>
       <NavBar/>
+{/* modal */}
+      
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X</button>
+        </div>
+        <div class="modal-body">
+          <img src="https://images.unsplash.com/photo-1682695797873-aa4cb6edd613?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
         <div className='search_wrapper'>
           <input type="text" placeholder="Search.." onChange={(e)=>setSearch(e.target.value)} />
           <button onClick={searchHandler}>Search</button>
