@@ -11,8 +11,10 @@ const Home = () => {
 
   //step 2
   const [storeData, setStoreData] = useState();
+  const [image, setImage] = useState();
   const [search,setSearch] = useState('child');//default category in '' first before search it show child pic
   const [page,setPage] = useState(1);
+
   //step 1 call api
   let keyAPI = 'c19t5LBUeXItCyO5nb5bpds50rtTKwmX7xOeFa4PnEBN8jabAxpjQW6U';
 
@@ -48,31 +50,29 @@ const Home = () => {
     const nextPageHandler = ()=>{
       setPage(page + 1)
     }
+    const imageUrlHandler = (src)=>{
+      setImage(src.medium)
+    }
 
   //  step3 map
   return (
     <div className='main'>
       <NavBar/>
 {/* modal */}
-      
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X</button>
+              </div>
+              <div class="modal-body">
+                {image &&  <img src={image} className="modal_image"/>}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          <img src="https://images.unsplash.com/photo-1682695797873-aa4cb6edd613?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8"/>
-        </div>
-      </div>
-    </div>
-  </div>
 
+{/* Map */}
         <div className='search_wrapper'>
           <input type="text" placeholder="Search.." onChange={(e)=>setSearch(e.target.value)} />
           <button onClick={searchHandler}>Search</button>
@@ -80,7 +80,7 @@ const Home = () => {
         <div className='image_wrapper'>
           {
             //  storeData && is if else statement if get data then run api storeData.map
-            storeData && storeData.map((val) => <img src={val.src.small} />)
+            storeData && storeData.map((val) => <img src={val.src.small} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>imageUrlHandler(val.src)}/>)
           }
         </div>
         <div>
